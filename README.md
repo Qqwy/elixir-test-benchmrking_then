@@ -122,9 +122,9 @@ And while performance of the tight loop has almost doubled, the relative differe
 By calling `:erts_debug.df(ModuleName)` we can look at the disassembled code.
 **Note that at least on my computer this does not work under OTP24 (it produces files with blank lines)***, so these results were obtained on the OTP23 branch:
 
-- [Implementation.Manual](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.Manual.dis)
-- [Implementation.Then](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.Then.dis)
-- [Implementation.ThenInlined](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.ThenInlined.dis)
+- [Implementation.Manual](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.Manual.dis#L11-L17)
+- [Implementation.Then](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.Then.dis#L11-L16)
+- [Implementation.ThenInlined](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.ThenInlined.dis#L11-L17)
 
 From these we can see that the anonymous function introduced by `Kernel.then/2` is _not_ inlined except when `@compile :inline` is set.
 
