@@ -11,6 +11,7 @@ defmodule Implementation do
         x
         |> External.increment()
       res = {:ok, x}
+
       elem(res, 1)
     end
   end
