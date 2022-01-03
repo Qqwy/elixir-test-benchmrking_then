@@ -1,0 +1,8 @@
+00007F8202346728: i_func_info_IaaI 0 `'Elixir.Implementation.Manual'` `example` 1 
+00007F8202346750: allocate_tt 0 1 
+00007F8202346760: i_call_ext_e exp(`'Elixir.Implementation.External'`:`increment`/1) 
+00007F8202346770: test_heap_It 3 1 
+00007F8202346780: put_tuple2_xI x(0) 2  `ok` x(0)
+00007F82023467A0: i_get_tuple_element_xPx x(0) 1 x(0) 
+00007F82023467B8: deallocate_return0 
+

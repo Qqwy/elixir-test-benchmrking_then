@@ -1,0 +1,28 @@
+00007F820228B1D0: i_func_info_IaaI 0 `'Elixir.Implementation.ThenInlined'` `'__info__'` 1 
+00007F820228B1F8: i_select_val_lins_xfI x(0) f(00007F820228B1D0) 9 `attributes` `compile` `functions` `md5` `module` `deprecated` `exports_md5` `macros` `-1` f(00007F820228B2B8) f(00007F820228B2B8) f(00007F820228B290) f(00007F820228B2B8) f(00007F820228B280) f(00007F820228B2B0) f(00007F820228B2A0) f(00007F820228B2B0) f(00007F820228B1D0) 
+00007F820228B280: move_return_c `'Elixir.Implementation.ThenInlined'` 
+00007F820228B290: move_return_c `[{example,1}]` 
+00007F820228B2A0: move_return_c `<<16,93,89,248,174,197,234,178,226,64,36,117,226,8,105,6>>` 
+00007F820228B2B0: move_return_n `[]` 
+00007F820228B2B8: move_shift_cxx `'Elixir.Implementation.ThenInlined'` x(0) x(1) 
+00007F820228B2D0: call_light_bif_only_be bif(`erlang`:`get_module_info`/2) exp(`erlang`:`get_module_info`/2) 
+00007F820228B2E8: deallocate_return_Q 0 
+
+00007F820228B2F8: i_func_info_IaaI 0 `'Elixir.Implementation.ThenInlined'` `example` 1 
+00007F820228B320: allocate_tt 0 1 
+00007F820228B330: i_call_ext_e exp(`'Elixir.Implementation.External'`:`increment`/1) 
+00007F820228B340: test_heap_It 3 1 
+00007F820228B350: put_tuple2_xI x(0) 2  `ok` x(0)
+00007F820228B370: i_get_tuple_element_xPx x(0) 1 x(0) 
+00007F820228B388: deallocate_return0 
+
+00007F820228B390: i_func_info_IaaI 0 `'Elixir.Implementation.ThenInlined'` `module_info` 0 
+00007F820228B3B8: move_cr `'Elixir.Implementation.ThenInlined'` r(0) 
+00007F820228B3C8: call_light_bif_only_be bif(`erlang`:`get_module_info`/1) exp(`erlang`:`get_module_info`/1) 
+00007F820228B3E0: deallocate_return_Q 0 
+
+00007F820228B3F0: i_func_info_IaaI 0 `'Elixir.Implementation.ThenInlined'` `module_info` 1 
+00007F820228B418: move_shift_cxx `'Elixir.Implementation.ThenInlined'` x(0) x(1) 
+00007F820228B430: call_light_bif_only_be bif(`erlang`:`get_module_info`/2) exp(`erlang`:`get_module_info`/2) 
+00007F820228B448: deallocate_return_Q 0 
+

@@ -1,0 +1,7 @@
+00007F8202286200: i_func_info_IaaI 0 `'Elixir.Implementation.Then'` `example` 1 
+00007F8202286228: allocate_tt 0 1 
+00007F8202286238: i_call_ext_e exp(`'Elixir.Implementation.External'`:`increment`/1) 
+00007F8202286248: i_call_f loc(`'Elixir.Implementation.Then'`:`'-example/1-fun-0-'`/1) 
+00007F8202286258: i_get_tuple_element_xPx x(0) 1 x(0) 
+00007F8202286270: deallocate_return0 
+

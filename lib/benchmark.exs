@@ -1,35 +1,5 @@
 defmodule Benchmark do
-  defmodule External do
-    def increment(val) do
-      val + 1
-    end
-  end
-
-  defmodule Manual do
-    def example(x) do
-      x =
-        x
-        |> External.increment()
-      {:ok, x}
-    end
-  end
-
-  defmodule Then do
-    def example(x) do
-      x
-      |> then(&External.increment/1)
-      |> then(&{:ok, &1})
-    end
-  end
-
-  defmodule ThenInlined do
-    @compile :inline
-    def example(x) do
-      x
-      |> then(&External.increment/1)
-      |> then(&{:ok, &1})
-    end
-  end
+  alias Implementation.{Manual, Then, ThenInlined}
 
   def run() do
     Benchee.run(
