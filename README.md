@@ -7,7 +7,25 @@ Run `mix run lib/benchmark.exs` to run the benchmarks on your machine.
 Look at the `main` branch for the OTP24 version and the `otp23` branch for the OTP23 version.
 _(The only difference between the branches are the Elixir and Erlang versions in the `.tool-versions` file to be used with the [ASDF version manager](asdf-vm.com/))_
 
-# OTP 24
+# Benchmark details
+
+We compare three alternatives:
+
+- `Manual` simulates a pipeline applied to an argument, which is then modified by putting it in a tuple and finally part of this tuple is returned.
+- `Then` simulates how this would be streamlined by using `Kernel.then/2`
+- `ThenInlined` has the same code as `Then` but its module also contains `@compile :inline`.
+
+Note that we perform some work at the end of the pipeline to prevent the compiler from performing tail optimization, which would obfuscate the difference in performance and memory of these techniques.
+
+Each benchmark run runs the given functions 1000 times over all elements in a list, to simulate a pipeline being run in a tight loop. This makes differences in performance more apparent.
+
+# Benchmark outcomes
+
+I ran the benchmark on OTP24 and on OTP23 (in both caes using Elixir 1.13.1) to compare the difference of the JIT.
+
+Even better would be to compile Erlang 24 with both 'emu' and 'jit'-support and compare these; this is left as an exercise for the reader ;-).
+
+## OTP 24
 
 ```
 Operating System: Linux
@@ -50,7 +68,7 @@ Then               39.06 KB - 2.50x memory usage +23.44 KB
 **All measurements for memory usage were the same**
 ```
 
-# OTP 23
+## OTP 23
 
 ```
 CPU Information: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
@@ -93,11 +111,21 @@ Then               39.06 KB - 1.00x memory usage +0 KB
 
 ```
 
+## Findings
+
+It is very odd to see that on OTP 24, significantly more memory is used for `Then`.
+
+And while performance of the tight loop has almost doubled, the relative difference in performance between `Manual`/`ThenInlined` and `Then` is 30%, which seems significant.
+
 # Looking at the disassembled code
 
 By calling `:erts_debug.df(ModuleName)` we can look at the disassembled code.
 **Note that at least on my computer this does not work under OTP24 (it produces files with blank lines)***, so these results were obtained on the OTP23 branch:
 
-- [Implementation.Manual]()
-- [Implementation.Then]()
-- [Implementation.ThenInlined]()
+- [Implementation.Manual](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.Manual.dis)
+- [Implementation.Then](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.Then.dis)
+- [Implementation.ThenInlined](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.ThenInlined.dis)
+
+From these we can see that the anonymous function introduced by `Kernel.then/2` is _not_ inlined except when `@compile :inlin` is set.
+
+
