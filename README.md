@@ -17,7 +17,7 @@ We compare three alternatives:
 
 Note that we perform some work at the end of the pipeline to prevent the compiler from performing tail optimization, which would obfuscate the difference in performance and memory of these techniques.
 
-Each benchmark run runs the given functions 1000 times over all elements in a list, to simulate a pipeline being run in a tight loop. This makes differences in performance more apparent.
+Each benchmark run runs the given functions 1000 times over all elements in a list, to ensure that the benchmark is fair (the snippet we benchmark is, relatively speaking, so fast that the instrumentation of the benchmarking framework itself would otherwise overshadow and invalidate any measured results).
 
 # Benchmark outcomes
 
