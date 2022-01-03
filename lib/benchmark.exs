@@ -1,6 +1,8 @@
 defmodule Benchmark do
   alias Implementation.{Manual, Then, ThenInlined}
 
+  # We run the benchmark on all elements in a list
+  # as we're simulating something which will often be run in a tight loop
   def run() do
     Benchee.run(
       %{
@@ -9,11 +11,9 @@ defmodule Benchmark do
         "ThenInlined" => fn list -> Enum.map(list, &ThenInlined.example/1) end,
 
       },
-      time: 2,
+      time: 10,
       memory_time: 2,
       inputs: %{
-        "10" => Enum.to_list(1..10),
-        "100" => Enum.to_list(1..100),
         "1000" => Enum.to_list(1..1000),
       }
     )
