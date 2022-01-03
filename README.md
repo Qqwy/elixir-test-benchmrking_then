@@ -126,6 +126,6 @@ By calling `:erts_debug.df(ModuleName)` we can look at the disassembled code.
 - [Implementation.Then](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.Then.dis)
 - [Implementation.ThenInlined](https://github.com/Qqwy/elixir-test-benchmrking_then/blob/otp23/Elixir.Implementation.ThenInlined.dis)
 
-From these we can see that the anonymous function introduced by `Kernel.then/2` is _not_ inlined except when `@compile :inlin` is set.
+From these we can see that the anonymous function introduced by `Kernel.then/2` is _not_ inlined except when `@compile :inline` is set.
 
 
